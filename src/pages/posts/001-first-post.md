@@ -2,7 +2,6 @@
 title: 'First Post - Introduction'
 date: 2020-09-20 23:00:00
 author: 'Join Doe'
-path: '/first-post'
 image: ../../images/graftrain_1.jpg
 tags:
 - graffity

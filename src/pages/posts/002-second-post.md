@@ -2,7 +2,6 @@
 title: 'Second Post - A Good Day'
 date: 2020-09-20 23:12:32
 author: 'Andrew Sten'
-path: '/second-post'
 image: ../../images/graftrain_2.jpg
 tags:
 - graffity
@@ -10,5 +9,4 @@ tags:
 - train
 ---
 
-Graffiti U-Bahn / subway train at Warschauer Strasse Station in Berlin.
-
+The Merseyrail Class 777, part of a new fleet, was covered in graffiti while waiting to be transported to Merseyside in a depot in Tonbridge, Kent.

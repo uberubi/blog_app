@@ -1,5 +1,6 @@
 const { slugify } = require('./src/utils/slugify')
 const path = require('path')
+const authors = require('./src/utils/authors')
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
@@ -44,6 +45,8 @@ exports.createPages = ({ actions, graphql }) => {
         context: {
           // Passing slug for template to use to get post
           slug: node.fields.slug,
+          // find author imageUrl from authors and pass it to the single template
+          imageUrl: authors.find(el => el.name ===node.frontmatter.author).imageUrl
         },
       })
     })

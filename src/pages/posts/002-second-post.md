@@ -1,5 +1,5 @@
 ---
-title: 'Second Post - A Good Day'
+title: 'Second Post - New Train'
 date: 2020-09-20 23:12:32
 author: 'Vasya Rat'
 image: ../../images/graftrain_2.jpg

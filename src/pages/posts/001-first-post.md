@@ -1,5 +1,5 @@
 ---
-title: 'First Post - Introduction'
+title: 'First Post - Berlin'
 date: 2020-09-20 23:00:00
 author: 'Andrew Rat'
 image: ../../images/graftrain_1.jpg

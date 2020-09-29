@@ -12,7 +12,7 @@ import {
 import Img from "gatsby-image"
 
 const Sidebar = ({ author, authorFluid }) => {
-  console.log(author)
+  // console.log(author)
   return (
     <div>
       {author && (

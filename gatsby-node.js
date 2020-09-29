@@ -19,8 +19,9 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   const templates = {
-    singlePost: path.resolve('src/templates/single-post.js'),
-    tagsPage: path.resolve('src/templates/tags-page.js'),
+    singlePost: path.resolve("src/templates/single-post.js"),
+    tagsPage: path.resolve("src/templates/tags-page.js"),
+    tagPosts: path.resolve("src/templates/tag-posts.js"),
   }
 
   return graphql(`
@@ -62,7 +63,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Get all tags
     let tags = []
     _.each(posts, edge => {
-      if (_.get(edge, 'node.frontmatter.tags')) {
+      if (_.get(edge, "node.frontmatter.tags")) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
     })
@@ -87,6 +88,17 @@ exports.createPages = ({ actions, graphql }) => {
         tags,
         tagPostCounts,
       },
+    })
+
+    // Create tag posts pages
+    tags.forEach(tag => {
+      createPage({
+        path: `/tag/${slugify(tag)}`,
+        component: templates.tagPosts,
+        context: {
+          tag,
+        },
+      })
     })
   })
 }

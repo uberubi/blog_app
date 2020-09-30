@@ -1,7 +1,7 @@
 ---
 title: 'Second Post - New Train'
 date: 2020-09-20 23:12:32
-author: 'Vasya Rat'
+author: 'Andrew Rat'
 image: ../../images/graftrain_2.jpg
 tags:
 - graffity

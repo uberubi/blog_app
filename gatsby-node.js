@@ -5,11 +5,11 @@ const _ = require("lodash")
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.type === "MarkdownRemark") {
+  if (node.internal.type === 'MarkdownRemark') {
     const slugFromTitle = slugify(node.frontmatter.title)
     createNodeField({
       node,
-      name: "slug",
+      name: 'slug',
       value: slugFromTitle,
     })
   }
@@ -19,10 +19,10 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   const templates = {
-    singlePost: path.resolve("src/templates/single-post.js"),
-    tagsPage: path.resolve("src/templates/tags-page.js"),
-    tagPosts: path.resolve("src/templates/tag-posts.js"),
-    postList: path.resolve("src/templates/post-list.js"),
+    singlePost: path.resolve('src/templates/single-post.js'),
+    tagsPage: path.resolve('src/templates/tags-page.js'),
+    tagPosts: path.resolve('src/templates/tag-posts.js'),
+    postList: path.resolve('src/templates/post-list.js'),
   }
 
   return graphql(`
@@ -64,7 +64,7 @@ exports.createPages = ({ actions, graphql }) => {
     // Get all tags
     let tags = []
     _.each(posts, edge => {
-      if (_.get(edge, "node.frontmatter.tags")) {
+      if (_.get(edge, 'node.frontmatter.tags')) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
     })
@@ -115,6 +115,7 @@ exports.createPages = ({ actions, graphql }) => {
           limit: postsPerPage,
           skip: index * postsPerPage,
           currentPage,
+          numberOfPages,
         },
       })
     })

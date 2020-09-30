@@ -2,16 +2,16 @@ import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout"
 import Post from "../components/Post"
+import PaginationLinks from '../components/PaginationLinks'
 
-const postList = ({ data, pageContext }) => {
-  const posts = data.allMarkdownRemark.edges
-  const { currentPage } = pageContext
+const postList = props => {
+  const posts = props.data.allMarkdownRemark.edges
+  const { currentPage, numberOfPages } = props.pageContext
 
   return (
     <Layout pageTitle={`Page: ${currentPage}`}>
       {posts.map(({ node }) => (
         <Post
-          key={node.id}
           key={node.id}
           slug={node.fields.slug}
           title={node.frontmatter.title}
@@ -22,6 +22,7 @@ const postList = ({ data, pageContext }) => {
           fluid={node.frontmatter.image.childImageSharp.fluid}
         />
       ))}
+      <PaginationLinks currentPage={currentPage} numberOfPages={numberOfPages} />
     </Layout>
   )
 }
@@ -38,7 +39,7 @@ export const postListQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMM do YYYY")
+            date(formatString: "MMMM Do YYYY")
             author
             tags
             image {

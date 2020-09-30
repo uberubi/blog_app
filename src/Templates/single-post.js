@@ -24,7 +24,7 @@ const SinglePost = ({ data, pageContext }) => {
     <Layout
       pageTitle={post.title}
       postAuthor={author}
-      // authorImageFluid={data.file.childImageSharp.fluid}
+      authorImageFluid={data.file.childImageSharp.fluid}
     >
       <SEO title={post.title} />
       <Card>

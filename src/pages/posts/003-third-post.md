@@ -1,7 +1,7 @@
 ---
 title: 'Third Post - Banksy Girl With Balloon'
 date: 2020-09-29 14:11:00
-author: 'Banksy'
+author: 'Andrew Rat'
 image: ../../images/banky-girl-with-balloon.jpg
 tags:
 - graffity

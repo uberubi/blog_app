@@ -8,25 +8,33 @@ import { slugify } from "../utils/slugify"
 import authors from "../utils/authors"
 import { DiscussionEmbed } from "disqus-react"
 
-const SinglePost = ({ data, pageContext }) => {
+const singlePost = ({ data, pageContext, location }) => {
   const post = data.markdownRemark.frontmatter
   const author = authors.find(x => x.name === post.author)
 
-  const baseUrl = `https://gatsbytutorial.co.uk`
+  const baseUrl = "https://gatsbytutorial.co.uk/"
 
   const disqusShortname = "https-gatsbytutorial-co-uk"
   const disqusConfig = {
     identifier: data.markdownRemark.id,
     title: post.title,
-    url: baseUrl + pageContext.slug
+    url: baseUrl + pageContext.slug,
   }
+
   return (
     <Layout
       pageTitle={post.title}
       postAuthor={author}
       authorImageFluid={data.file.childImageSharp.fluid}
     >
-      <SEO title={post.title} />
+      <SEO
+        author={post.author}
+        title={post.title}
+        keywords={post.tags}
+        description={post.description}
+        url={baseUrl}
+        pathname={location.pathname}
+      />
       <Card>
         <Img
           className="card-image-top"
@@ -55,12 +63,12 @@ const SinglePost = ({ data, pageContext }) => {
           <li>
             <a
               href={
-                "https://www.facebook.com/sharer.php?u=" +
+                "https://www.facebook.com/sharer/sharer.php?u=" +
                 baseUrl +
                 pageContext.slug
               }
               className="facebook"
-              target_="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-facebook-f fa-2x" />
@@ -69,7 +77,7 @@ const SinglePost = ({ data, pageContext }) => {
           <li>
             <a
               href={
-                "https://www.twitter.com/share?url=" +
+                "https://twitter.com/share?url=" +
                 baseUrl +
                 pageContext.slug +
                 "&text=" +
@@ -78,7 +86,7 @@ const SinglePost = ({ data, pageContext }) => {
                 "twitterHandle"
               }
               className="twitter"
-              target_="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-twitter fa-2x" />
@@ -87,10 +95,12 @@ const SinglePost = ({ data, pageContext }) => {
           <li>
             <a
               href={
-                "https://plus.google/share?url=" + baseUrl + pageContext.slug
+                "https://plus.google.com/share?url=" +
+                baseUrl +
+                pageContext.slug
               }
               className="google"
-              target_="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-google fa-2x" />
@@ -104,7 +114,7 @@ const SinglePost = ({ data, pageContext }) => {
                 pageContext.slug
               }
               className="linkedin"
-              target_="_blank"
+              target="_blank"
               rel="noopener noreferrer"
             >
               <i className="fab fa-linkedin fa-2x" />
@@ -129,7 +139,7 @@ export const postQuery = graphql`
         tags
         image {
           childImageSharp {
-            fluid(maxWidth: 600, maxHeight: 350) {
+            fluid(maxWidth: 700) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -146,4 +156,4 @@ export const postQuery = graphql`
   }
 `
 
-export default SinglePost
+export default singlePost

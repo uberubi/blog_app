@@ -11,7 +11,7 @@ const authors = [
   },
   {
     name: "Vasya Rat",
-    imageUrl: "banksy-rat-2.jpg",
+    imageUrl: "banksy-rat.jpg",
     bio: "...just another banksy rat Vasya",
     facebook: "https://www.facebook.com/",
     twitter: "https://www.twitter.com/",
